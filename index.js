@@ -3,7 +3,7 @@ var _ = require('lodash');
 var FormFiller = {
   checkItems: function(elementIds) {
     elementIds.forEach(function(id, index) {
-      var el = document.getElementsById(id);
+      var el = document.getElementById(id);
       el.checked = true;
     });
   },
@@ -30,7 +30,7 @@ var FormFiller = {
   init: function(map, className) {
     var self = this;
     var el = className || 'form-filler';
-    var button = document.getElementsByClassName(el);
+    var button = document.getElementsByClassName(el)[0];
 
     button.addEventListener('click', function() {
       self.fill(map);
