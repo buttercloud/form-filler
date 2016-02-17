@@ -1,0 +1,11 @@
+{
+  "name": "form-filler",
+  "version": "1.0.0",
+  "description": "Fill long forms with a single button during development.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ButterCloud LLC.",
+  "license": "ISC"
+}
