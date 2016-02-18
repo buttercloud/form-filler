@@ -99,7 +99,7 @@ var FormFillerUtil = {
 
     button.addEventListener('click', function() {
       fillFn();
-    });    
+    });
   }
 };
 
