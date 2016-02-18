@@ -15,6 +15,13 @@ var FormFillerUtil = {
     el[index].selected = true;
   },
 
+  _selectOptionWithValue: function(el, value) {
+    var options = el.options;
+    var index = _.findIndex(el.options, function(o) { return o.value === value });
+
+    this._selectOption(el, index);
+  },
+
   _checkItemsWithIds: function(elementIds) {
     var self = this;
 
@@ -24,12 +31,26 @@ var FormFillerUtil = {
     });
   },
 
-  _selectOptionsWithIds: function(selectTagIds, index) {
+  _selectOptionsWithIds: function(selects) {
     var self = this;
 
-    selectTagIds.forEach(function(id) {
-      var el = document.getElementById(id);
-      self._selectOption(el, index);
+    selects.forEach(function(select) {
+      if (_.isPlainObject(select)) {
+        if (_.has(select, 'id')) {
+          var el = document.getElementById(select.id);
+
+          if (_.has(select, "index") &&
+              !_.has(select, "value")) {
+            self._selectOption(el, select.index);
+          } else if (_.has(select, "value") &&
+                    !_.has(select, "index")) {
+            self._selectOptionWithValue(el, select.value);
+          };
+        }
+      } else {
+        var el = document.getElementById(select);
+        self._selectOption(el, el.length - 1);
+      };
     });
   },
 
@@ -53,19 +74,17 @@ var FormFillerUtil = {
     if (_.isArray(map.check)) {
       this._checkItemsWithIds(map.check);
     };
-    
-    if (!_.isEmpty(map.select)) {
-      if (_.isArray(map.select.items)) {
-        this._selectOptionsWithIds(map.select.items, map.select.index || map.select.items.length - 1);
-      };
+
+    if (_.isArray(map.radio)) {
+      this._checkItemsWithIds(map.radio)
+    };
+
+    if (_.isArray(map.select)) {
+      this._selectOptionsWithIds(map.select);
     };
     
     if (_.isArray(map.text)) {
       this._fillTextFieldsWithIds(map.text);
-    };
-    
-    if (_.isArray(map.radio)) {
-      this._checkItemsWithIds(map.radio)
     };
   },
   
