@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-var FormFiller = {
+var FormFillerUtil = {
   _fillTextField: function(el, text, isLongText) {
     var lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     var value = isLongText ? lorem : (text || "This is text.");
@@ -100,14 +100,16 @@ var FormFiller = {
     button.addEventListener('click', function() {
       fillFn();
     });    
-  },
+  }
+};
 
-  init: function(map, className) {
-    this._bindAndInit(className, this._fill.bind(this, map));
+var FormFiller = {
+  fill: function(map, className) {
+    FormFillerUtil._bindAndInit(className, FormFillerUtil._fill.bind(FormFillerUtil, map));
   },
 
   fillAll: function(formId, className) {
-    this._bindAndInit(className, this._fillAllForm.bind(this, formId));
+    FormFillerUtil._bindAndInit(className, FormFillerUtil._fillAllForm.bind(FormFillerUtil, formId));
   }
 };
 
