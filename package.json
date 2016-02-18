@@ -1,13 +1,13 @@
 {
   "name": "form-filler",
   "version": "1.0.0",
-  "description": "Fill long forms with a single button during development.",
+  "description": "Fill long forms with a single button for development or testing.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ButterCloud LLC.",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "lodash": "^4.4.0"
   }
