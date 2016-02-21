@@ -1,6 +1,6 @@
 {
   "name": "form-filler",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Fill forms with a single button for faster development and testing.",
   "main": "src/index.js",
   "bugs": {
