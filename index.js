@@ -113,8 +113,8 @@ var FormFillerUtil = {
 
   _bindAndInit: function(className, fillFn) {
     var self = this;
-    var el = className || 'form-filler';
-    var button = document.getElementsByClassName(el)[0];
+    var name = className || 'form-filler';
+    var button = document.getElementsByClassName(name)[0];
 
     button.addEventListener('click', function() {
       fillFn();
