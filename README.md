@@ -54,10 +54,16 @@ $ npm install form-filler@latest --save-dev
 <button class="form-filler">Fill Form</button>
 ```
 
-* In you JavaScript code initialize the `form-filler`. This will bind a `click` event to the button you set up in the previous step and fill out the form with the object you've provided: 
+* In you JavaScript code initialize the `form-filler`.
+This will bind a `click` event to the button you set up in the previous step and fill out the form with the object you've provided:
+
+**Note**: you must initialize the DOM before calling the `fill` function, otherwise it will not work.
 
 ```javascript
 var FormFiller = require('form-filler');
+
+// or using ES6 syntax
+import FormFiller from 'form-filler';
 
 var map = {check: ["check1"],
            radio: ["radio1"],
