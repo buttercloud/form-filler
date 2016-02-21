@@ -1,12 +1,14 @@
 {
   "name": "form-filler",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Fill forms with a single button for faster development and testing.",
   "main": "index.js",
+  "url": "https://github.com/buttercloud/form-filler/issues",
+  "homepage": "https://github.com/buttercloud/form-filler/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "ButterCloud LLC.",
+  "author": "ButterCloud LLC. <info@buttercloud.com> (http://www.buttercloud.com/)",
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.4.0"
