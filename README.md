@@ -1,5 +1,7 @@
 # form-filler
 
+[![wercker status](https://app.wercker.com/status/bbecf5724c20b9dab349e0272a1d23c4/s/master "wercker status")](https://app.wercker.com/project/bykey/bbecf5724c20b9dab349e0272a1d23c4)
+
 Fill forms with a single button for faster development and testing.
 
 ## Installation
