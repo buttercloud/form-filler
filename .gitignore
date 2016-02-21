@@ -15,8 +15,6 @@
 
 .sass-cache
 /node_modules
-/app/assets/bower_components
 /public/assets
 .DS_Store
-config/database.yml
 .wercker
