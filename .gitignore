@@ -12,6 +12,7 @@
 /log/*
 !/log/.keep
 /tmp
+*.log
 
 .sass-cache
 /node_modules
