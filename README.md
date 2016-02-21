@@ -96,7 +96,7 @@ FormFiller.fill(map);
           * `long` will fill the textarea/text field with long text.
 
 
-## Advance Usage
+## Advanced Usage
 
 * You can provide the `fill` function a custom class name for the fill button we added in a previous step:
 
