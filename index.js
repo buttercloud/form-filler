@@ -27,7 +27,10 @@ var FormFillerUtil = {
 
     elementIds.forEach(function(id) {
       var el = document.getElementById(id);
-      self._checkItem(el);
+
+      if (el) {
+        self._checkItem(el);
+      }
     });
   },
 
@@ -39,18 +42,23 @@ var FormFillerUtil = {
         if (_.has(select, 'id')) {
           var el = document.getElementById(select.id);
 
-          if (_.has(select, "index") &&
-              !_.has(select, "value")) {
-            self._selectOption(el, select.index);
-          } else if (_.has(select, "value") &&
-                    !_.has(select, "index")) {
-            self._selectOptionWithValue(el, select.value);
-          };
+          if (el) {
+            if (_.has(select, "index") &&
+                !_.has(select, "value")) {
+              self._selectOption(el, select.index);
+            } else if (_.has(select, "value") &&
+                      !_.has(select, "index")) {
+              self._selectOptionWithValue(el, select.value);
+            }
+          }
         }
       } else {
         var el = document.getElementById(select);
-        self._selectOption(el, el.length - 1);
-      };
+
+        if (el) {
+          self._selectOption(el, el.length - 1);
+        }
+      }
     });
   },
 
@@ -61,52 +69,61 @@ var FormFillerUtil = {
       if (_.isPlainObject(input)) {
         if (_.has(input, 'id')) {
           var el = document.getElementById(input.id);
-          self._fillTextField(el, input.text, input.long || false);
-        };
+
+          if (el) {
+            self._fillTextField(el, input.text, input.long || false);
+          }
+        }
       } else {
         var el = document.getElementById(input);
-        self._fillTextField(el);
-      };
+
+        if (el) {
+          self._fillTextField(el);
+        }
+      }
     });
   },
 
   _fill: function(map) {
     if (_.isArray(map.check)) {
       this._checkItemsWithIds(map.check);
-    };
+    }
 
     if (_.isArray(map.radio)) {
-      this._checkItemsWithIds(map.radio)
-    };
+      this._checkItemsWithIds(map.radio);
+    }
 
     if (_.isArray(map.select)) {
       this._selectOptionsWithIds(map.select);
-    };
+    }
     
     if (_.isArray(map.text)) {
       this._fillTextFieldsWithIds(map.text);
-    };
+    }
   },
   
   _fillAllForm: function(formId) {
     var self = this;
     var formEl = document.getElementById(formId);
-    var children = formEl.children;
 
-    for (var i = 0; i < children.length; i++) {
-      var el = children[i];
+    if (formEl) {
+      var children = formEl.children;
 
-      switch (el.nodeName) {
-        case "INPUT":
-          el.type === "text" ? self._fillTextField(el, null, false) : self._checkItem(el);
-          break;
-        case "SELECT":
-          self._selectOption(el, el.length - 1);
-          break;
-        case "TEXTAREA":
-          self._fillTextField(el, null, true);
-          break;
-        default:
+      for (var i = 0; i < children.length; i++) {
+        var el = children[i];
+
+        switch (el.nodeName) {
+          case "INPUT":
+            el.type === "text" ? self._fillTextField(el, null, false) : self._checkItem(el);
+            break;
+          case "SELECT":
+            self._selectOption(el, el.length - 1);
+            break;
+          case "TEXTAREA":
+            self._fillTextField(el, null, true);
+            break;
+          default:
+        }
       }
     }
   },
@@ -116,9 +133,11 @@ var FormFillerUtil = {
     var name = className || 'form-filler';
     var button = document.getElementsByClassName(name)[0];
 
-    button.addEventListener('click', function() {
-      fillFn();
-    });
+    if (button) {
+      button.addEventListener('click', function() {
+        fillFn();
+      });
+    }
   }
 };
 
