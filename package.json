@@ -8,12 +8,18 @@
   },
   "homepage": "https://github.com/buttercloud/form-filler/",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/"
   },
   "author": "ButterCloud LLC. <info@buttercloud.com> (http://www.buttercloud.com/)",
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.4.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-webdriver": "^1.1.1",
+    "mocha": "^2.4.5",
+    "selenium-webdriver": "^2.52.0"
   },
   "engines": {
     "node": ">=5.1.0"
