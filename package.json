@@ -1,7 +1,7 @@
 {
   "name": "form-filler",
   "version": "1.0.0",
-  "description": "Fill long forms with a single button for development or testing.",
+  "description": "Fill forms with a single button for faster development and testing.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
