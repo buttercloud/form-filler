@@ -1,7 +1,7 @@
 var chai = require('chai');
 var expect = chai.expect();
 var fs = require('fs');
-var FormFiller = require('../index.js');
+var FormFiller = require('../src/index.js');
 
 describe("Classes", function() {
   describe("FormFiller", function() {
