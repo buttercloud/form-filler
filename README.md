@@ -8,7 +8,7 @@ Fill forms with a single button for faster development and testing.
 The easiest way to use `form-filler` is to install it from NPM.
 
 ```bash
-$ npm install form-filler --save-dev
+$ npm install form-filler@latest --save-dev
 ```
 
 ## Basic Usage
