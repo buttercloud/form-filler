@@ -80,8 +80,8 @@ FormFiller.fill(map);
   * Values:
     * `check` key: Array of plain IDs, e.g: `["id1", "id2"]`.
     * `radio` key: Array of plain IDs, e.g: `["id1", "id2"]`.
-    * `select` key: Array of plain IDs, e.g: `["id1", "id2"]`, or a mixture of:
-      * Plain IDs, e.g: `"id1"`
+    * `select` key: Array of plain IDs (last option is selected), e.g: `["id1", "id2"]`, or a mixture of:
+      * Plain IDs (last option is selected), e.g: `"id1"`
       * Maps:
         * `{id: "element-id-here", value: "value-of-option"}`
         * `{id: "element-id-here", index: 1}`
