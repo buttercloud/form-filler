@@ -1,5 +1,25 @@
 var _ = require('lodash');
 
+var fillFormFromQueryString = function(query) {
+  var queries = decodeURI(query).split('&').map(function(e){return e.split('=')});
+  queries.forEach(function(val) {
+    var id = val[0];
+    var el = document.getElementById(id);
+    var value = val[1];
+
+    switch (el.type) {
+      case 'checkbox':
+        el.checked = value === "true" ? true : false;
+        break;
+      case 'radio':
+        el.checked = value === "true" ? true : false;
+        break;
+      default:
+        el.value = value;
+    }
+  });
+}
+
 var FormFillerUtil = {
   _fillTextField: function(el, text, isLongText) {
     var lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -138,6 +158,27 @@ var FormFillerUtil = {
         fillFn();
       });
     }
+  },
+  
+  _save: function(formId, className) {
+    var name = className || 'form-filler-save';
+    var saveLink = document.getElementsByClassName(name)[0];
+
+    var kvpairs = [];
+    var form = document.getElementById(formId);
+
+    for(var i=0 ; i<form.elements.length; i++) {
+      var e = form.elements[i];
+      if (e.type === 'radio' || e.type === 'checkbox') {
+        kvpairs.push(e.id + '=' + e.checked);  
+      } else {
+        kvpairs.push(e.id + '=' + e.value);  
+      };
+    };
+
+    var res = kvpairs.join("&");
+
+    saveLink.href = "javascript:(" + fillFormFromQueryString.toString() + "(\"" + encodeURI(res) + "\"));"
   }
 };
 
@@ -148,6 +189,10 @@ var FormFiller = {
 
   fillAll: function(formId, className) {
     FormFillerUtil._bindAndInit(className, FormFillerUtil._fillAllForm.bind(FormFillerUtil, formId));
+  },
+
+  saveBind: function(formId, className) {
+    FormFillerUtil._save(formId, className);
   }
 };
 
