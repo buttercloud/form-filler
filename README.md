@@ -119,10 +119,24 @@ FormFiller.fillAll("your-form-id");
 FormFiller.fillAll("your-form-id", "custom-button-class");
 ```
 
+* You can save the form state in a bookmarklet if you do not want to add any form state in your code. Call the following with the `<form>` ID and the `<a>` tag's ID. This will fill the `href` of the `<a>` tag with the bookmarklet code.
+```javascript
+FormFiller.saveBind('form-id', 'link-id');
+```
+
+* Example:
+```javascript
+// Using JQuery bind a button to trigger the above function on click
+$('#some-button-id').on('click', function() {
+  FormFiller.saveBind('form-id', 'link-id');
+});
+```
+
 ## API Reference
 
 * `FormFiller.fill(map[, buttonClassName]);`
 * `FormFiller.fillAll(formId[, buttonClassName]);`
+* `FormFiller.saveBind(formId, linkId);`
 
 * `form-filler` is the default `buttonClassName`.
 
@@ -139,6 +153,9 @@ Run tests using:
 ```bash
 $ npm test
 ```
+
+## Todo
+* Tests
 
 ## Contributing
 
